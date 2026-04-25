@@ -1,0 +1,386 @@
+:root {
+  --vp-c-brand: #ffffff;
+  --vp-c-brand-light: #f8fafc;
+  --vp-c-brand-lighter: #ffffff;
+  --vp-c-brand-dark: #94a3b8;
+  --vp-c-brand-darker: #64748b;
+
+  --vp-c-bg: #000000;
+  --vp-c-bg-alt: #08080a;
+  --vp-c-bg-elv: #16161c;
+  --vp-c-bg-soft: rgba(10, 10, 10, 0.45);
+
+  --vp-c-text-1: #f8fafc;
+  --vp-c-text-2: #94a3b8;
+  --vp-c-text-3: #64748b;
+
+  --vp-c-border: rgba(255, 255, 255, 0.12);
+  --vp-c-divider: rgba(255, 255, 255, 0.06);
+  --vp-c-divider-light: rgba(255, 255, 255, 0.12);
+
+  --vp-font-family-base: "Noto Sans SC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  --vp-sidebar-width: clamp(240px, 20vw, 320px);
+}
+
+:root {
+  --vp-nav-bg-color: #000000 !important;
+}
+
+html:not(.dark) {
+  --vp-c-bg: #000000;
+  --vp-c-bg-alt: #08080a;
+  --vp-c-text-1: #f8fafc;
+  --vp-c-text-2: #94a3b8;
+  --vp-c-border: rgba(255, 255, 255, 0.12);
+  --vp-c-divider: rgba(255, 255, 255, 0.12);
+  --vp-c-divider-light: rgba(255, 255, 255, 0.12);
+}
+
+.VPNavScreenAppearance,
+.VPSwitchAppearance, 
+.VPNavBarAppearance,
+.appearance {
+  display: none !important;
+}
+
+:root {
+  --vp-nav-bg-color: #000000 !important;
+}
+
+.VPNavBar,
+.VPNavBarTitle,
+.VPNavBar .content,
+.VPNav {
+  background-color: #000000 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+.VPNavBarTitle.has-sidebar {
+  border-bottom-color: rgba(255, 255, 255, 0.12) !important;
+  background-color: #000000 !important;
+}
+
+.VPSidebar {
+  background: transparent !important;
+  border-right: 1px solid var(--vp-c-border);
+}
+
+.VPSidebarGroup .title-text,
+.VPNavScreenMenuGroup > .button .text {
+  font-weight: 700 !important;
+  font-size: 16px !important;
+  color: #ffffff !important;
+}
+
+.VPSidebarGroup .title {
+  width: max-content;
+  padding: 6px 12px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  line-height: 1.5;
+}
+.VPSidebarGroup .title:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.VPSidebarItem {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.VPSidebarGroup .items {
+  margin-left: 12px !important;
+  border-left: 1px dashed rgba(255, 255, 255, 0.15) !important;
+  padding-left: 12px !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.VPSidebarGroup .items .VPLink.link {
+  display: flex !important;
+  align-items: center !important;
+  width: max-content !important;
+  padding: 4px 12px !important;
+  margin: 1px 0 !important;
+  border-radius: 6px !important;
+  transition: background 0.3s ease !important;
+  line-height: 1.5 !important;
+}
+
+.VPSidebarGroup .items .VPLink.link .link-text {
+  font-size: 14.5px !important;
+  color: #94a3b8 !important;
+  transition: all 0.3s ease !important;
+  display: inline-block !important;
+}
+
+.VPSidebarGroup .items .VPLink.link:hover {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.VPSidebarGroup .items .VPLink.link:hover .link-text {
+  color: #ffffff !important;
+  transform: translateX(4px) !important;
+}
+
+a.VPLink.link.active .text,
+a.VPLink.link.active .link-text,
+.VPSidebarItem.active > .item .text,
+.VPSidebarItem.active > .item > .VPLink .text,
+.VPSidebarGroup .VPLink.active .link-text,
+.VPSidebarItem .VPLink.link.active .text,
+.VPNavBarMenuLink.active,
+.VPNavScreenMenuLink.active .text {
+  color: #38bdf8 !important;
+  font-weight: 700 !important;
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.4) !important;
+}
+
+.VPSidebarGroup .action svg,
+.VPNavScreenMenuGroup .button svg,
+.VPNavScreenMenuGroup .button-icon,
+.VPNavScreenMenuGroup .button .icon {
+  display: none !important;
+}
+
+.VPNavScreenMenu > *,
+.VPNavScreenMenuGroup {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+.VPNavScreenMenuLink,
+.VPNavScreenMenuGroupLink {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.VPSidebarGroup .action::after,
+.VPNavScreenMenuGroup > .button::after {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid #94a3b8;
+  border-bottom: 2px solid #94a3b8;
+
+  transform: rotate(45deg);
+  transition: transform 0.3s ease;
+  margin-left: auto;
+  margin-right: 8px;
+}
+
+.VPSidebarGroup.collapsed .action::after,
+.VPNavScreenMenuGroup.collapsed > .button::after {
+  transform: rotate(-45deg);
+}
+
+.VPNavBarMenuGroup .button .text::after {
+  content: '';
+  display: inline-block;
+  margin-left: 6px;
+  margin-bottom: 2px;
+  width: 6px;
+  height: 6px;
+  border-right: 2px solid #94a3b8;
+  border-bottom: 2px solid #94a3b8;
+  transform: rotate(45deg);
+  transition: transform 0.3s ease;
+}
+.VPNavBarMenuGroup:hover .button .text::after {
+  transform: rotate(-135deg); 
+}
+.VPNavBarMenuGroup .button svg {
+  display: none !important;
+}
+
+.VPSidebarGroup .items,
+.VPNavScreenMenuGroup > .items {
+  max-height: 800px;
+  opacity: 1;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: top;
+}
+
+.VPSidebarGroup.collapsed .items,
+.VPNavScreenMenuGroup.collapsed > .items {
+  max-height: 0 !important;
+  opacity: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+.VPNavScreen {
+  background-color: rgba(5, 5, 5, 0.65) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+}
+
+.VPNavScreen .container,
+.VPNavScreenMenu,
+.VPNavScreenMenuGroup,
+.VPNavScreenMenuGroup .items,
+.VPNavScreenMenuGroup .menu {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+@media (max-width: 959px) {
+
+.VPNavBar,
+.VPNavBarTitle,
+.VPNavBar .content,
+.VPNav {
+  background-color: #000000 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+.VPNavBarTitle.has-sidebar {
+  border-bottom-color: rgba(255, 255, 255, 0.12) !important;
+  background-color: #000000 !important;
+}
+
+.VPSidebar {
+    background-color: rgba(5, 5, 5, 0.75) !important;
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px) !important;
+  }
+}
+
+.VPDoc {
+  background: rgba(10, 10, 10, 0.45);
+  border-radius: 0 !important; 
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 24px;
+  margin-top: 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.VPDoc::before, .VPSidebar::before {
+  content: '';
+  position: absolute;
+  top: var(--mouse-y, -1000px);
+  left: var(--mouse-x, -1000px);
+  width: 600px;
+  height: 600px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.5s;
+  pointer-events: none;
+  z-index: 0;
+  mix-blend-mode: overlay;
+}
+
+.VPDoc:hover::before, .VPSidebar:hover::before {
+  opacity: 1;
+}
+
+.VPDoc > * {
+  position: relative;
+  z-index: 1;
+}
+
+.VPMenu {
+  background: rgba(10, 10, 10, 0.8) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.1) !important;
+  animation: vpMenuFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+  transform-origin: top center;
+}
+
+@keyframes vpMenuFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.vp-doc a[href^="http"]:not([target="_blank"]):not(.header-anchor),
+.VPButton {
+  font-family: inherit;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: #fff !important;
+  border-radius: 0 !important; 
+  border: 1px solid rgba(255,255,255,0.2) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: inset 0 0 20px rgba(255,255,255,0.05), 0 8px 32px rgba(0,0,0,0.3) !important;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+  position: relative;
+  overflow: hidden;
+  padding: 8px 16px;
+  text-decoration: none !important;
+}
+
+.VPButton::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: all 0.5s;
+  transform: skewX(-20deg);
+}
+
+.VPButton:hover::after {
+  left: 120%;
+  transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.VPButton:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: inset 0 0 30px rgba(255,255,255,0.1), 0 12px 40px rgba(0,0,0,0.4), 0 0 15px rgba(255,255,255,0.2) !important;
+  border-color: rgba(255,255,255,0.4) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #08080a;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 5px;
+  border: 2px solid #08080a;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+::-webkit-scrollbar-corner {
+  background: #08080a;
+}
+
+.VPFooter.has-sidebar {
+  display: block !important;
+  border-top: 1px solid rgba(255,255,255,0.06) !important;
+  background-color: var(--vp-c-bg) !important;
+  padding-bottom: 24px !important;
+}
+
+@media (min-width: 960px) {
+  .VPFooter.has-sidebar {
+    padding-left: calc(var(--vp-sidebar-width) + 32px) !important;
+  }
+}
+
+@media (min-width: 1440px) {
+  .VPFooter.has-sidebar {
+    padding-left: calc((100vw - var(--vp-layout-max-width)) / 2 + var(--vp-sidebar-width)) !important;
+  }
+}
