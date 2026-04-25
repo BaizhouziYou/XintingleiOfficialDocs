@@ -3,7 +3,7 @@
 这里是 **新亭泪** 官方文档仓库。
 
 ## 官网
-- 官网：<https://xintinglei.cn/>
+- 官网：<https://xintinglei.cn>
 
 ## 文档
 - 文档地址：<https://docs.xintinglei.cn>
