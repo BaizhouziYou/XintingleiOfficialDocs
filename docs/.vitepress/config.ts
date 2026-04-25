@@ -2,6 +2,7 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   appearance: false,
+  titleTemplate: false,
   title: '新亭泪',
   description: '新亭泪服务器官方文档',
   themeConfig: {
@@ -53,6 +54,13 @@ export default defineConfig({
           { text: '神人史', link: '/about/legends' },
           { text: '组织简史', link: '/about/history' },
           { text: '图片风采', link: '/about/gallery' }
+        ]
+      },
+      { 
+        text: '鸣谢', 
+        items: [
+          { text: '特别鸣谢', link: '/about/thanks' },
+          { text: '赞助鸣谢', link: '/about/sponsors' }
         ]
       }
     ],
@@ -110,6 +118,15 @@ export default defineConfig({
           { text: '神人史', link: '/about/legends' },
           { text: '组织简史', link: '/about/history' },
           { text: '图片风采', link: '/about/gallery' }
+        ]
+      },
+      {
+        text: '鸣谢',
+        collapsed: true, 
+        collapsible: true,
+        items: [
+          { text: '特别鸣谢', link: '/about/thanks' },
+          { text: '赞助鸣谢', link: '/about/sponsors' }
         ]
       }
     ]
