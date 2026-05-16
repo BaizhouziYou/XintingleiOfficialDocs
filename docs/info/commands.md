@@ -1,6 +1,6 @@
-## 服内指令
+# 服内指令
 
-/reg 注册密码
+/register 注册密码
 
 /login 登录
 
@@ -18,6 +18,8 @@ All music
 
 Carpet
 
-详见链接视频内容
+详见以下视频
 
-【Minecraft辅助性的终极模组——地毯！本期视频带你入门了解！！-哔哩哔哩】 [https://b23.tv/o7Fg33k](https://b23.tv/o7Fg33k)
+Minecraft辅助性的终极模组——地毯！本期视频带你入门了解！！
+
+<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=113728469074492&bvid=BV1t1C4YuEa2&cid=27570538839&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 100%; aspect-ratio: 16/9; margin-top: 16px; border-radius: 8px;"></iframe>
