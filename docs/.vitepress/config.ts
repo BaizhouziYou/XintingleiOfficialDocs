@@ -88,7 +88,8 @@ export default defineConfig({
           { text: '服内称号获取', link: '/gameplay/titles' },
           { text: '皮肤站相关', link: '/gameplay/skin' },
           { text: 'PCL配置教程', link: '/guide/pcl-config' },
-          { text: 'FCL入服教程', link: '/guide/fcl-mobile' }
+          { text: 'FCL入服教程', link: '/guide/fcl-mobile' },
+          { text: 'Xintinglei客户端(MadeByRosa)', link: '/guide/XintingleiClient-ver-Rosa' }
         ]
       },
       {
