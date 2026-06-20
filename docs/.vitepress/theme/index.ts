@@ -4,16 +4,36 @@ import { inBrowser } from 'vitepress'
 
 export default {
   ...DefaultTheme,
-  enhanceApp({ app, router, siteData }) {
+  enhanceApp() {
     if (inBrowser) {
-      window.addEventListener('mousemove', (e) => {
-        document.querySelectorAll('.vp-doc, .VPSidebar, .VPNav').forEach((panel) => {
+      let panels = Array.from(document.querySelectorAll<HTMLElement>('.vp-doc, .VPSidebar, .VPNav'))
+      let rafId = 0
+      let mouseX = 0
+      let mouseY = 0
+
+      const updatePanels = () => {
+        rafId = 0
+        panels.forEach((panel) => {
           const rect = panel.getBoundingClientRect()
-          const elem = panel as HTMLElement
-          elem.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`)
-          elem.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`)
+          panel.style.setProperty('--mouse-x', `${mouseX - rect.left}px`)
+          panel.style.setProperty('--mouse-y', `${mouseY - rect.top}px`)
         })
+      }
+
+      const refreshPanels = () => {
+        panels = Array.from(document.querySelectorAll<HTMLElement>('.vp-doc, .VPSidebar, .VPNav'))
+      }
+
+      window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX
+        mouseY = e.clientY
+
+        if (!rafId) {
+          rafId = window.requestAnimationFrame(updatePanels)
+        }
       })
+
+      window.addEventListener('resize', refreshPanels)
     }
   }
 }

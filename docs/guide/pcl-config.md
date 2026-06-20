@@ -16,4 +16,4 @@
 
 即可将联网主页同步到您的客户端(如下图所示)
 
-![descript](/images/pcl-config.png)
+![PCL启动器联网主页配置示例](/images/pcl-config.png)

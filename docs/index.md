@@ -1,4 +1,4 @@
-![descript](/images/d3dcdb8463af634afaa61c55f72ab70f.png)
+![新亭泪服务器宣传图](/images/d3dcdb8463af634afaa61c55f72ab70f.png)
 
 
 **\-徜徉漫天花海，共度此夜晴月；亭泪凝作过往，新亭翼然眼前-**
