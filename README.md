@@ -8,6 +8,9 @@
 ## 文档
 - 文档地址：<https://docs.xintinglei.cn>
 
+## 开发环境
+- Node.js v24.14.1+
+
 ## 本地开发
 
 ```bash
