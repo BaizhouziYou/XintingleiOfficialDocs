@@ -18,7 +18,8 @@ const sections = [
       { text: '皮肤站相关', link: '/gameplay/skin' },
       { text: 'PCL配置教程', link: '/guide/pcl-config' },
       { text: 'FCL入服教程', link: '/guide/fcl-mobile' },
-      { text: 'Xintinglei客户端(MadeByRosa)', link: '/guide/XintingleiClient-ver-Rosa' }
+      { text: 'Xintinglei客户端（Rosa_Tenuifolia 特调优化版）', link: '/guide/XintingleiClient-ver-Rosa' },
+      { text: 'Rosa版 Mod 与资源包说明', link: '/guide/XintingleiClient-ver-Rosa-mods' },
     ]
   },
   {
