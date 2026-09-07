@@ -22,6 +22,7 @@ npm run dev
 ```bash
 npm run build
 ```
+构建产物位于`/docs/.vitepress/dist`
 
 ## 预览
 ```bash
