@@ -20,8 +20,9 @@ const sections = [
       { text: '皮肤站相关', link: '/gameplay/skin' },
       { text: 'PCL配置教程', link: '/guide/pcl-config' },
       { text: 'FCL入服教程', link: '/guide/fcl-mobile' },
-      { text: 'Xintinglei客户端（Rosa_Tenuifolia 特调优化版）', link: '/guide/XintingleiClient-ver-Rosa' },
-      { text: 'Rosa版 Mod 与资源包说明', link: '/guide/XintingleiClient-ver-Rosa-mods' },
+      { text: 'Xintinglei客户端安装教程', link: '/guide/xintinglei-client-installation' },
+      { text: 'Xintinglei客户端', link: '/guide/XintingleiClient-ver-Rosa' },
+      { text: '生电服专属附魔玩法', link: '/gameplay/centifolia-enchantments' },
       { text: '周年庆活动', link: '/info/anniversary-activity' }
     ]
   },
@@ -67,9 +68,7 @@ export default defineConfig({
     ['link', { rel: 'icon', href: '/favicon.ico', type: 'image/x-icon' }]
   ],
   themeConfig: {
-    search: {
-      provider: 'local'
-    },
+    search: { provider: 'local' },
     footer: {
       message: '<span class="footer-links"><a href="http://beian.miit.gov.cn" target="_blank" style="color:var(--vp-c-text-2);">蜀ICP备2025122567号-1</a> <span style="margin:0 8px;">|</span> <a href="https://beian.mps.gov.cn/#/query/webSearch?code=51010702043466" target="_blank" style="color:var(--vp-c-text-2);">川公网安备51010702043466号</a></span><br>网站代码基于 MIT 协议开源，文档内容基于 CC BY-NC-SA 4.0 协议许可。',
       copyright: 'Copyright &copy; 2024-2026 新亭泪'
