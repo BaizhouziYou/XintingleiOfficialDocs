@@ -32,10 +32,10 @@ Xintinglei客户端是面向新亭泪生电服玩家整理的 Windows 整合包�
 
 保持默认配置即可正常游玩。若出现启动失败、显示异常或缺少 Mod 的提示，不建议自行删除 `mods`、`config` 或资源包内的文件；请先保留报错信息，你可以发送给ai（不要使用豆包）或者发送到qq群内寻求技术指导
 
-想了解服务器新增的附魔与专属机制，请阅读 [生电服专属附魔玩法](/gameplay/centifolia-enchantments)。
+想了解服务器新增的附魔与专属机制，请阅读 [生电服专属附魔玩法](/info/centifolia-enchantments)。
 
 ## 相关页面
 
 - [Xintinglei客户端安装教程](/guide/xintinglei-client-installation)
 - [入服步骤](/guide/join-steps)
-- [生电服专属附魔玩法](/gameplay/centifolia-enchantments)
+- [生电服专属附魔玩法](/info/centifolia-enchantments)
