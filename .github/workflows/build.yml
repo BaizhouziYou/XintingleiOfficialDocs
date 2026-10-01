@@ -1,0 +1,116 @@
+name: Docs Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  # Never interrupt an active production deployment.
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    name: Build documentation
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Check build metadata and release switching
+        run: |
+          node --test scripts/build-info.test.mjs
+          bash scripts/deploy.test.sh
+      - name: Build documentation
+        run: npm run build
+      - name: Store static site
+        uses: actions/upload-artifact@v7
+        with:
+          name: docs-site
+          overwrite: true
+          path: docs/.vitepress/dist/
+          if-no-files-found: error
+          retention-days: 7
+
+  deploy:
+    name: Deploy documentation
+    needs: build
+    if: >-
+      github.ref == 'refs/heads/main' &&
+      github.event_name != 'pull_request' &&
+      vars.DEPLOY_ENABLED == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    environment: production
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@v8
+        with:
+          name: docs-site
+          path: site
+      - name: Upload and activate static site
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_PORT: ${{ secrets.SSH_PORT || '22' }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
+          DEPLOY_PATH: ${{ vars.DEPLOY_PATH }}
+        run: |
+          : "${SSH_HOST:?Missing SSH_HOST}" "${SSH_USER:?Missing SSH_USER}"
+          : "${SSH_PRIVATE_KEY:?Missing SSH_PRIVATE_KEY}" "${SSH_KNOWN_HOSTS:?Missing SSH_KNOWN_HOSTS}"
+          : "${DEPLOY_PATH:?Missing DEPLOY_PATH}"
+          [[ "$SSH_HOST" =~ ^[a-zA-Z0-9][a-zA-Z0-9.-]*$ ]]
+          [[ "$SSH_USER" =~ ^[a-z_][a-z0-9_-]*$ ]]
+          [[ "$SSH_PORT" =~ ^[1-9][0-9]{0,4}$ ]]
+          (( SSH_PORT <= 65535 ))
+          [[ "$DEPLOY_PATH" =~ ^/([A-Za-z0-9_-][A-Za-z0-9._-]*/){2,}[A-Za-z0-9_-][A-Za-z0-9._-]*$ ]]
+          release_id="$GITHUB_RUN_NUMBER-$GITHUB_RUN_ATTEMPT-$GITHUB_SHA"
+          [[ "$release_id" =~ ^[1-9][0-9]*-[1-9][0-9]*-[a-f0-9]{40}$ ]]
+          test -s site/index.html
+          test -d site/assets
+
+          ssh_dir="$RUNNER_TEMP/docs-ssh"
+          install -d -m 700 "$ssh_dir"
+          printf '%s\n' "$SSH_PRIVATE_KEY" > "$ssh_dir/key"
+          printf '%s\n' "$SSH_KNOWN_HOSTS" > "$ssh_dir/known_hosts"
+          chmod 600 "$ssh_dir/key" "$ssh_dir/known_hosts"
+          cat > "$ssh_dir/config" <<EOF
+          Host docs-deploy
+            HostName $SSH_HOST
+            Port $SSH_PORT
+            User $SSH_USER
+            IdentityFile $ssh_dir/key
+            UserKnownHostsFile $ssh_dir/known_hosts
+            StrictHostKeyChecking yes
+            IdentitiesOnly yes
+            BatchMode yes
+            ConnectTimeout 20
+            ServerAliveInterval 15
+            ServerAliveCountMax 4
+          EOF
+          ssh -F "$ssh_dir/config" docs-deploy "test -f '$DEPLOY_PATH/.docs-deploy-root' && test ! -e '$DEPLOY_PATH/releases/$release_id' && mkdir -p '$DEPLOY_PATH/releases/$release_id'"
+          rsync -az --timeout=120 --chmod=D755,F644 -e "ssh -F $ssh_dir/config" \
+            site/ "docs-deploy:$DEPLOY_PATH/releases/$release_id/"
+          ssh -F "$ssh_dir/config" docs-deploy "bash -s -- '$DEPLOY_PATH' '$release_id'" < scripts/activate-release.sh
+      - name: Remove temporary SSH credentials
+        if: always()
+        run: rm -f -- "$RUNNER_TEMP/docs-ssh/key" "$RUNNER_TEMP/docs-ssh/known_hosts" "$RUNNER_TEMP/docs-ssh/config"

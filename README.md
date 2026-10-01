@@ -24,6 +24,11 @@ npm run build
 ```
 构建产物位于`/docs/.vitepress/dist`
 
+## 自动构建与部署
+
+PR 自动检查构建；配置完成后，`main` 更新自动部署到宝塔静态站。页脚显示对应构建编号与提交。
+服务器及 GitHub 配置见 [部署说明](.github/DEPLOYMENT.md)。
+
 ## 预览
 ```bash
 npm run serve

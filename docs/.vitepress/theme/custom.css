@@ -34,6 +34,23 @@ html:not(.dark) {
   --vp-c-divider-light: rgba(255, 255, 255, 0.12);
 }
 
+.vp-doc table th {
+  background-color: var(--vp-c-bg-elv);
+  color: var(--vp-c-text-1);
+}
+
+.VPFooter .build-info {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--vp-c-text-2);
+}
+
+.VPFooter .build-info a:hover {
+  color: var(--vp-c-text-1);
+  text-decoration: underline;
+}
+
 .VPNavBar,
 .VPNavBarTitle,
 .VPNavBar .content,

@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import { buildFooter } from './build-info.mjs'
 
 const sections = [
   {
@@ -71,7 +72,7 @@ export default defineConfig({
     search: { provider: 'local' },
     footer: {
       message: '<span class="footer-links"><a href="http://beian.miit.gov.cn" target="_blank" style="color:var(--vp-c-text-2);">蜀ICP备2025122567号-1</a> <span style="margin:0 8px;">|</span> <a href="https://beian.mps.gov.cn/#/query/webSearch?code=51010702043466" target="_blank" style="color:var(--vp-c-text-2);">川公网安备51010702043466号</a></span><br>网站代码基于 MIT 协议开源，文档内容基于 CC BY-NC-SA 4.0 协议许可。',
-      copyright: 'Copyright &copy; 2024-2026 新亭泪'
+      copyright: `Copyright &copy; 2024-2026 新亭泪<br><span class="build-info">${buildFooter()}</span>`
     },
     socialLinks: [
       { icon: 'github', link: 'https://github.com/BaizhouziYou/XintingleiOfficialDocs' }
