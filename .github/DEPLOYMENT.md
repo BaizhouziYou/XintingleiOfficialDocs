@@ -2,10 +2,10 @@
 
 GitHub Actions 负责安装依赖、检查、构建；通过 SSH / rsync 将静态文件推送到 Ubuntu 24.04。大陆服务器无需连接 GitHub、npm，也无需安装 Node.js。公网 SSH 必须能从 GitHub 托管 runner 访问；不要为此关闭防火墙或 SSH 身份校验。
 
-- PR：检查并构建，不读取部署密钥、不部署。
-- `main` 推送：构建成功后自动部署（需先完成下列配置）。
-- Actions → Docs Build → Run workflow：可手动触发；只有 `main` 能部署。
-- 页脚：`基于构建 #编号.重试次数 · 提交`，分别链接到本次运行和完整提交；本地运行显示“本地构建”。
+- 普通分支提交（包括 `main`）和 PR：不触发此工作流，不构建、不部署。
+- 推送 `v*` 版本标签（例如 `v0.1.1`）：构建该标签对应的提交，成功后自动部署（需先完成下列配置）。只接受已经合并到 `main` 的标签提交；删除标签不会执行构建。
+- Actions → Docs Build → Run workflow：保留手动入口；`main` 和 `v*` 标签可以部署，其他分支仅构建。手动构建标签时同样检查提交已合并到 `main`。
+- 页脚：`v0.1.1 · 基于构建 #编号.重试次数 · 提交`，分别链接到标签、本次运行和完整提交；手动构建分支不冒用已有版本号，本地运行显示“本地构建”。
 - 本地检查：`node --test scripts/build-info.test.mjs`；Linux 下另运行 `bash scripts/deploy.test.sh`。
 
 ## 1. 宝塔与服务器准备
@@ -35,7 +35,12 @@ sudo ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key.pub
 
 ## 2. GitHub 配置
 
-仓库 Settings → Environments 新建 `production`，部署分支限制为 `main`。需要审批时可添加 required reviewers；启用后每次部署需要人工批准。
+仓库 Settings → Environments 新建或打开 `production`，在 Deployment branches and tags 中选择 **Selected branches and tags**，分别添加两条规则：
+
+- 类型 **Branch**，名称 `main`：供手动部署使用。
+- 类型 **Tag**，名称 `v*`：供版本发布使用。已有的 `main` 分支规则不能代替这条标签规则，否则标签构建成功后部署仍会被环境拒绝。
+
+需要审批时可添加 required reviewers；启用后每次部署需要人工批准。若仓库分支保护曾要求 PR 必须通过 `Build documentation` 检查，需要同步调整，因为本工作流不再监听 PR。
 
 在 `production` 中配置 Secrets：
 
@@ -64,7 +69,24 @@ sudo ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key.pub
 5. HTML 应设置重新验证缓存（`Cache-Control: no-cache`）；CDN 不要长期缓存 HTML，首次切换需刷新 HTML 缓存。带哈希的 `/assets/` 可使用长期缓存。否则页脚可能仍显示旧构建。
 6. 访问主页和任意文档页，核对页脚编号是否与 Actions 运行一致，并检查图片、导航及 HTTPS。工作流成功表示文件上传和目录切换完成，**不代表 CDN、宝塔和公网访问已验证**。
 
-后续只需合并/推送到 `main`。传输失败不会切换当前站点；同一工作流的部署不会并发中断，服务器额外加锁，并拒绝用较小的构建编号覆盖较新的构建。重跑旧提交若编号仍较小也会被拒绝，回滚请使用下节方式。仅重跑部署 job 会复用原构建产物，页脚仍显示实际构建的那次 attempt；产物超过 7 天保留期后需重新运行全部 jobs。
+### 后续发布版本
+
+先把本次工作流调整提交并合并到 `main`，再给包含新工作流的提交打标签；不要给旧工作流所在的提交补标签来启用新规则。
+
+日常修改正常提交、合并，不会自动上线。准备发布时，在干净的本地工作区执行（版本号按实际递增）：
+
+```bash
+git switch main
+git pull --ff-only origin main
+git tag -a v0.1.1 -m "Release v0.1.1"
+git push origin v0.1.1
+```
+
+仅在本地打标签不会触发构建，必须推送该标签。也可以在 GitHub Releases 中新建 `v*` 标签并选择 `main` 上的目标提交；实际触发来自标签推送，不是 Release 描述的编辑。工作流使用标签指向的代码，不会改为构建随后更新的 `main`。
+
+`v*` 是前缀匹配，不是严格的语义化版本校验；推荐统一使用 `v0.1.1` 这样的格式。它也会匹配 `v0.2.0-rc.1`，这类标签同样会部署到正式站，不要用它做仅供预览的发布。已发布标签不要移动或覆盖，修复后发布新版本；每次只推送一个待发布标签，不使用 `git push --tags` 批量发布。
+
+不同版本共用发布并发组，不会中途取消正在执行的部署；连续触发多次时，GitHub 可能用新运行替换尚未开始的排队运行，请等当前发布结束后再推送下一版本。传输失败不会切换当前站点，服务器额外加锁，并拒绝用较小的构建编号覆盖较新的构建。重跑旧运行若编号仍较小也会被拒绝，回滚请使用下节方式。仅重跑部署 job 会复用原构建产物，页脚仍显示实际构建的那次 attempt；产物超过 7 天保留期后需重新运行全部 jobs。
 
 ## 回滚与空间管理
 
@@ -78,4 +100,4 @@ ln -s releases/目标版本目录 current-rollback
 mv -Tf current-rollback current
 ```
 
-刷新 HTML 缓存并检查站点。恢复自动部署前，在 `main` 修正或撤回问题提交；仅切回旧目录不会更改 Git 历史。清理时不要删除 `current` 指向的版本、最近需要的回滚版本或仍被缓存页面引用的哈希资源。
+刷新 HTML 缓存并检查站点。恢复自动部署前，在 `main` 修正或撤回问题提交，再发布新的版本标签；仅切回旧目录不会更改 Git 历史。清理时不要删除 `current` 指向的版本、最近需要的回滚版本或仍被缓存页面引用的哈希资源。

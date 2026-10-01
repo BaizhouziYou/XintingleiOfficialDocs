@@ -10,6 +10,15 @@ export function buildFooter(env = process.env) {
   }
 
   const url = `https://github.com/${repo}`
-  return `基于构建 <a href="${url}/actions/runs/${run}/attempts/${attempt}">#${number}.${attempt}</a>` +
+  let version = ''
+  if (env.GITHUB_REF_TYPE === 'tag') {
+    const tag = env.GITHUB_REF_NAME
+    if (typeof tag !== 'string' || !tag) throw new Error('Missing GitHub release tag')
+    const label = tag.replace(/[&<>"']/g, char => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    })[char])
+    version = `<a href="${url}/tree/${encodeURIComponent(tag)}">${label}</a> · `
+  }
+  return version + `基于构建 <a href="${url}/actions/runs/${run}/attempts/${attempt}">#${number}.${attempt}</a>` +
     ` · 提交 <a href="${url}/commit/${sha}">${sha.slice(0, 7)}</a>`
 }
