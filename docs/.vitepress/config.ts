@@ -71,8 +71,26 @@ export default defineConfig({
   themeConfig: {
     search: { provider: 'local' },
     footer: {
-      message: '<span class="footer-links"><a href="http://beian.miit.gov.cn" target="_blank" style="color:var(--vp-c-text-2);">蜀ICP备2025122567号-1</a> <span style="margin:0 8px;">|</span> <a href="https://beian.mps.gov.cn/#/query/webSearch?code=51010702043466" target="_blank" style="color:var(--vp-c-text-2);">川公网安备51010702043466号</a></span><br>网站代码基于 MIT 协议开源，文档内容基于 CC BY-NC-SA 4.0 协议许可。',
-      copyright: `Copyright &copy; 2024-2026 新亭泪<br><span class="build-info">${buildFooter()}</span>`
+      message: `
+        <a class="footer-brand" href="/" aria-label="返回新亭泪文档首页">
+          <span class="footer-brand-name">XINTINGLEI</span>
+          <span class="footer-brand-subtitle">COMMUNITY DOCUMENTATION</span>
+        </a>
+        <span class="footer-copyright">
+          <span>&copy; 2024-2026 Xintinglei</span>
+          <span>新亭泪官方文档</span>
+        </span>`,
+      copyright: `
+        <span class="footer-links" role="group" aria-label="文档源码与许可">
+          <a class="footer-source" href="https://github.com/BaizhouziYou/XintingleiOfficialDocs" target="_blank" rel="noopener noreferrer" aria-label="查看 Xintinglei Docs 源码">Xintinglei Docs <span aria-hidden="true">SOURCE ↗</span></a>
+          <a href="https://github.com/BaizhouziYou/XintingleiOfficialDocs/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">代码 MIT</a>
+          <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">文档 CC BY-NC-SA 4.0</a>
+        </span>
+        <span class="footer-records" role="group" aria-label="网站备案信息">
+          <a href="https://beian.miit.gov.cn" target="_blank" rel="noopener noreferrer">蜀ICP备2025122567号-1</a>
+          <a href="https://beian.mps.gov.cn/#/query/webSearch?code=51010702043466" target="_blank" rel="noopener noreferrer">川公网安备51010702043466号</a>
+        </span>
+        <span class="build-info">${buildFooter()}</span>`
     },
     socialLinks: [
       { icon: 'github', link: 'https://github.com/BaizhouziYou/XintingleiOfficialDocs' }
