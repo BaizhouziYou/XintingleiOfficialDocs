@@ -8,6 +8,8 @@
  >你可以使用Microsoft、Github、QQ 登录/注册
  >
  >注册时务必与你原本的游戏id一致(不论正版/离线)
+ >
+ >支持直接登录Microsoft账号绑定基岩版
 
 3.**java版入服**  
 启动器登录皮肤站（下面以pcl为例）
@@ -27,7 +29,7 @@
 1.26.30 ～ 1.26.34  
 1.26.40 ～ 1.26.45  
 ```
-在你首次加入服务器的时候会提供一个8位数的绑定验证码，你需要使用它在[基岩版皮肤站绑定](https://skin.xintinglei.cn/user/bedrock-link) 完成绑定
+如果你没有直接使用Microsoft账号绑定基岩版，在你首次加入服务器的时候会提供一个8位数的绑定验证码，你需要使用它在[基岩版皮肤站绑定](https://skin.xintinglei.cn/user/bedrock-link) 完成绑定
 
 4.在群文件中下载你想游玩的子服的整合包并拖入启动器  
 - 如果你下载了[Xintinglei客户端rosa特调](https://docs.xintinglei.cn/guide/XintingleiClient-ver-Rosa.html)可以免去填写认证服务器与下载生电整合包的步骤
