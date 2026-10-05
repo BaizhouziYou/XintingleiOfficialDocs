@@ -44,4 +44,4 @@ npm run serve
 * **文档内容**：`docs/` 目录下的所有文章、教程等内容采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 协议。**允许分享和修改，但必须署名，且禁止用于商业用途，修改后的作品也必须采用相同的协议。**
 * **代码与配置**：本项目自有的 VitePress 配置、主题、网站代码及脚本（包括 `docs/.vitepress/`）采用 [AGPL-3.0-only](LICENSES/AGPL-3.0-only.txt) 协议，与官网的 AGPL 版本一致；不适用上述文档内容许可。
 
-VitePress、Vue 等第三方依赖保留各自的许可证。原先以 MIT 发布的代码保留其原有授权及版权声明，详见 [许可范围与版权声明](LICENSE)。
+VitePress、Vue 等第三方依赖保留各自的许可证，详见 [许可范围与版权声明](LICENSE)。
