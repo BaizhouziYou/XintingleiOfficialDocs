@@ -1,20 +1,30 @@
 License Statement for This Repository
 
-This repository contains two different licenses depending on the type of content. 
+This repository uses separate licenses for documentation and project code.
 
 ========================================================================
 1. Documentation Content (CC BY-NC-SA 4.0)
 ========================================================================
 
-All markdown documents, images, and text content located within the `docs/` directory (excluding code snippets embedded within the documents) are licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+All markdown documents, images, and text content located within the `docs/` directory (excluding code snippets embedded within the documents and the code and configuration in `docs/.vitepress/`) are licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
 
 XintingleiOfficialDocs © 2026 by BaiZhouziYou, Konggcx123 is licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/
 
 ========================================================================
-2. Code and Configuration (MIT License)
+2. Code and Configuration (AGPL-3.0-only)
 ========================================================================
 
-All source code, configuration files, scripts, and VitePress theme configurations outside of the documentation content are licensed under the MIT License.
+The project's own source code, configuration files, scripts, and VitePress theme code, including `docs/.vitepress/`, are distributed under the GNU Affero General Public License, version 3 only (SPDX: AGPL-3.0-only).
+
+You may redistribute and modify this covered code under the terms of version 3 of the GNU Affero General Public License as published by the Free Software Foundation. It is provided without any warranty, including the implied warranties of merchantability or fitness for a particular purpose. The complete license is included in `LICENSES/AGPL-3.0-only.txt` and is available at https://www.gnu.org/licenses/agpl-3.0.html.
+
+This code license does not replace the documentation license above. VitePress, Vue, and other third-party dependencies retain their own licenses and copyright notices.
+
+Previously distributed MIT-licensed code retains its original permissions. The following notice is preserved for code incorporated from those versions; it does not offer all current project code under MIT as an alternative to AGPL-3.0-only.
+
+========================================================================
+3. Preserved MIT Notice
+========================================================================
 
 MIT License
 

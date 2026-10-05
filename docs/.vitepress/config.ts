@@ -83,7 +83,7 @@ export default defineConfig({
       copyright: `
         <span class="footer-links" role="group" aria-label="文档源码与许可">
           <a class="footer-source" href="https://github.com/BaizhouziYou/XintingleiOfficialDocs" target="_blank" rel="noopener noreferrer" aria-label="查看 Xintinglei Docs 源码">Xintinglei Docs <span aria-hidden="true">SOURCE ↗</span></a>
-          <a href="https://github.com/BaizhouziYou/XintingleiOfficialDocs/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">代码 MIT</a>
+          <a href="https://github.com/BaizhouziYou/XintingleiOfficialDocs/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">代码 AGPL-3.0</a>
           <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">文档 CC BY-NC-SA 4.0</a>
         </span>
         <span class="footer-records" role="group" aria-label="网站备案信息">
