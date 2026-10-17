@@ -24,7 +24,7 @@ const sections = [
       { text: 'Xintinglei客户端安装教程', link: '/guide/xintinglei-client-installation' },
       { text: 'Xintinglei客户端介绍', link: '/guide/XintingleiClient-ver-Rosa' },
       { text: '生电服专属附魔玩法', link: '/info/centifolia-enchantments' },
-      { text: '周年庆活动', link: '/info/anniversary-activity' }
+      { text: '服务器活动', link: '/info/server-activity' }
     ]
   },
   {

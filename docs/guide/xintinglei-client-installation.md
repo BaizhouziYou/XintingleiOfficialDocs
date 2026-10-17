@@ -1,4 +1,27 @@
-# Xintinglei客户端安装教程
+# 新亭泪生电客户端介绍
+**整合包（工具）分类：**
+-  XintingleiClient-Rosa  windows用户首选  （windows专用客户端）  
+-  XintingleiClient-All    手机/低配玩家首选  （通用客户端，优化较好）  
+-  XintingleiClient-Basic  自定义客户端首选   （只包含进服必备和优化模组）  
+-  XintingleiClient-Vulkan  帧数过低/尝鲜可用   （确定自己的设备支持Vulkan1.2再用）  
+-  Sempervirens          客户端设置迁移器    （可迁移如键位等设置，暂适配Rosa   
+  
+**最新版：**
+-  XintingleiClient-Rosa   v1.1.2
+-  XintingleiClient-All     v1.2.2
+-  XintingleiClient-Basic   v1.1.1
+-  XintingleiClient-Vulkan  v1.0.0
+-  Sempervirens         v1.0.0  
+
+**制作中：**
+-  手机专用键位（FCL启动器键位，适配XintingleiClient-All）
+-  各整合包性能测试整合  
+
+**出了问题可联系制作者**
+-  @破碎的烟之恶魔[Rosa]  （XintingleiClient-Rosa和Sempervirens联系）
+-  @3659dfg              （XintingleiClient-Vulkan , XintingleiClient-All和XintingleiClient-Basic联系）
+
+# 新亭泪生电客户端安装教程
 
 本教程适用于 Windows 与 PCL。客户端已经包含对应的游戏版本与大部分配置；请不要将它与旧客户端混在同一个文件夹中。
 
@@ -50,6 +73,22 @@ PCL 会默认选中 `XinTingLeiClient-Rosa-V1.1.2`。如启动器要求选择 Ja
 
 客户端已带有服务器相关的基础配置；进入游戏后，按[入服步骤](/guide/join-steps)完成绑定与选服即可。
 
-# 迁移个人预设相关教程
+# Sempervirens迁移MC个人预设相关教程
 
-## 1.
+**使用方法**  
+1.关闭 Minecraft 和正在使用相关实例的启动器。  
+2.选择迁出实例和迁入实例。  
+3.扫描可迁移内容，并查看每一项的差异说明。  
+4.选择需要迁移的内容和同名文件处理方式。  
+5.确认清单后开始迁移。  
+**处理重要存档前，建议额外保留一份独立备份。迁出实例始终只读，程序只会改动你选定的迁入实例。**
+
+**主要功能**
+- 自动发现 Minecraft 实例并显示完整路径。  
+- 内置“仅原版 Minecraft”和“新亭泪整合实例”规则。  
+- 支持从本地 JSON 文件载入自定义迁移规则。  
+- 在迁移前逐项展示差异、迁移内容和处理方式。  
+- 提供备份后覆盖、直接覆盖和保留目标三种同名内容策略。  
+- 支持迁移记录、备份定位、托盘运行、中英文界面和键盘操作。  
+- 支持应用内差分更新；更新失败时自动保留或恢复可用版本。  
+- 优先使用 GitHub Release 下载更新，无法访问时自动切换到国内加速源。  
